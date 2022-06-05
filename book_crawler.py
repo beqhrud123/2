@@ -28,4 +28,19 @@ for _ in range(15):
         except:
             name = "NAN"
             pass
-        
+#student_2
+        try:
+            money = driver.find_element_by_xpath(
+                f'//*[@id="search_list"]/tr[1]/td[4]/div[2]/strong').text
+            print(f'---{money}---')
+        except:
+            money = "NAN"
+            pass
+        res.append((name, money))
+    driver.find_element_by_css_selector('#contents_section > div.list_button_wrap > div.list_paging > a:nth-child(4)').click()
+print(res)
+driver.quit()
+
+
+data = pd.DataFrame(res)
+data.to_csv('./data1.csv')        
